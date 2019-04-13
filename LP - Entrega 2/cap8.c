@@ -365,41 +365,69 @@ main(){
                         diffInDays += 30 * (pDates[1].month - pDates[0].month);
                         diffInDays += 365 * (pDates[1].year - pDates[0].year);
                     }
-                    // Falta terminar a partir daqui
                     else{
                         if(pDates[0].day > pDates[1].day){ //Ex 8: 20/3/2018 - 10/4/2019 = 385
                             diffInDays += (pDates[1].day + 30) - pDates[0].day;
                             diffInDays += 30 * (pDates[1].month - pDates[0].month - 1);
                             diffInDays += 365 * (pDates[1].year - pDates[0].year);
                         }
-                        else{ //Ex 3: 10/4/2018 - 10/3/2017 = 395
-                            diffInDays += 30 * (pDates[0].month - pDates[1].month);
-                            diffInDays += 365 * (pDates[0].year - pDates[1].year);
+                        else{ //Ex 9: 10/3/2018 - 10/4/2019 = 395
+                            diffInDays += 30 * (pDates[1].month - pDates[0].month);
+                            diffInDays += 365 * (pDates[1].year - pDates[0].year);
                         }
                     }
                 }
                 else{
-                    if(pDates[0].day > pDates[1].day) //Ex 4: 20/3/2018 - 10/4/2017 = 340
+                    if(pDates[0].day < pDates[1].day) //Ex 10: 10/4/2017 - 20/3/2018  = 340
                     {
-                        diffInDays += pDates[0].day - pDates[1].day;
-                        diffInDays += 30 * ((pDates[0].month + 12) - pDates[1].month);
-                        diffInDays += 365 * (pDates[0].year - pDates[1].year - 1);
+                        diffInDays += pDates[1].day - pDates[0].day;
+                        diffInDays += 30 * ((pDates[1].month + 12) - pDates[0].month);
+                        diffInDays += 365 * (pDates[1].year - pDates[0].year - 1);
                     }
                     else{
-                        if(pDates[0].day < pDates[1].day){ //Ex 5: 10/3/2018 - 20/4/2017 = 320
-                            diffInDays += (pDates[0].day + 30) - pDates[1].day;
-                            diffInDays += 30 * ((pDates[0].month + 12) - pDates[1].month - 1);
-                            diffInDays += 365 * (pDates[0].year - pDates[1].year - 1);
+                        if(pDates[0].day > pDates[1].day){ //Ex 11: 20/4/2017 - 10/3/2018 = 320
+                            diffInDays += (pDates[1].day + 30) - pDates[0].day;
+                            diffInDays += 30 * ((pDates[1].month + 12) - pDates[0].month - 1);
+                            diffInDays += 365 * (pDates[1].year - pDates[0].year - 1);
                         }
-                        else{ //Ex 6: 10/3/2018 - 10/4/2017 = 330
-                            diffInDays += 30 * ((pDates[0].month + 12) - pDates[1].month);
-                            diffInDays += 365 * (pDates[0].year - pDates[1].year - 1);
+                        else{ //Ex 12: 10/4/2017 - 10/3/2018 = 330
+                            diffInDays += 30 * ((pDates[1].month + 12) - pDates[0].month);
+                            diffInDays += 365 * (pDates[1].year - pDates[0].year - 1);
                         }
                     }
                 }
             }
             else{
-
+                if(pDates[0].month > pDates[1].month){
+                    if(pDates[0].day > pDates[1].day){  // Ex 13: 20/4/2018 - 10/3/2018 = 40
+                        diffInDays += pDates[0].day - pDates[1].day;
+                        diffInDays += 30 * (pDates[0].month - pDates[1].month);
+                    }
+                    else{
+                        if(pDates[0].day < pDates[1].day){ // Ex 14: 10/4/2018 - 20/3/2018 = 20
+                            diffInDays += (pDates[0].day + 30) - pDates[1].day;
+                            diffInDays += 30 * (pDates[0].month - pDates[1].month - 1);
+                        }
+                        else{   // Ex 15 : 10/4/2018 - 10/3/2018 = 30
+                            diffInDays += 30 * (pDates[0].month - pDates[1].month);
+                        }
+                    }
+                }
+                else{
+                    if(pDates[0].day < pDates[1].day){ // Ex 16: 20/3/2018 - 10/4/2018 = 20
+                        diffInDays += pDates[1].day - pDates[0].day;
+                        diffInDays += 30 * (pDates[1].month - pDates[0].month);
+                    }
+                    else{
+                        if(pDates[0].day > pDates[1].day){ // Ex 17: 10/3/2018 - 20/4/2018 = 40
+                            diffInDays += (pDates[1].day + 30) - pDates[0].day;
+                            diffInDays += 30 * (pDates[1].month - pDates[0].month - 1);
+                        }
+                        else{    // Ex 18 : 10/3/2018 - 10/4/2018 = 30
+                            diffInDays += 30 * (pDates[1].month - pDates[0].month);
+                        }
+                    }
+                }
             }
         }
 
