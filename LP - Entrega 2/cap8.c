@@ -1,69 +1,68 @@
 #include "stdio.h"
 
-#define ex6
+#define ex1
 
 #ifdef ex1
 main(){
-    int i;
-    long l;
-    unsigned u;
-    float f;
-    double d;
-    char c;
-    unsigned long ul;
-    unsigned char uc;
-
-    int *pi;
-    long *pl;
-    unsigned *pu;
-    float *pf;
-    double *pd;
-    char *pc;
-    unsigned long *pul;
-    unsigned char *puc;
-
-    printf("Digite um int: ");
-    scanf("%d", &i);
-    printf("Digite um long: ");
-    scanf("%ld", &l);
-    printf("Digite um unsigned: ");
-    scanf("%u", &u);
-    printf("Digite um float: ");
-    scanf("%f", &f);
-    printf("Digite um double: ");
-    scanf("%lf", &d);
-    getchar();
-    printf("Digite um char: ");
-    scanf("%c", &c);
-    printf("Digite um unsigned long: ");
-    scanf("%lu", &ul);
-    getchar();
-    printf("Digite um unsigned char: ");
-    scanf("%hhc", &uc);
-
-
-
-    pi = &i;
-    pl = &l;
-    pu = &u;
-    pf = &f;
-    pd = &d;
-    pc = &c;
-    pul = &ul;
-    puc = &uc;
-
-    printf("        10        20        30        40        50        60\n");
-    printf("123456789012345678901234567890123456789012345678901234567890\n");
-    printf("    %-20d", *pi);
-    printf("%-20ld", *pl);
-    printf("%-15u\n", *pu);
-    printf("              %-20f", *pf);
-    printf("%-20f", *pd);
-    printf("%c\n", *pc);
-    printf("         %-20lu", *pul);
-    printf("%hhc\n", *puc);
-
     while(1){
+        int i;
+        long l;
+        unsigned u;
+        float f;
+        double d;
+        char c;
+        unsigned long ul;
+        unsigned char uc;
+
+        int *pi;
+        long *pl;
+        unsigned *pu;
+        float *pf;
+        double *pd;
+        char *pc;
+        unsigned long *pul;
+        unsigned char *puc;
+
+        printf("Digite um int: ");
+        scanf("%d", &i);
+        printf("Digite um long: ");
+        scanf("%ld", &l);
+        printf("Digite um unsigned: ");
+        scanf("%u", &u);
+        printf("Digite um float: ");
+        scanf("%f", &f);
+        printf("Digite um double: ");
+        scanf("%lf", &d);
+        getchar();
+        printf("Digite um char: ");
+        scanf("%c", &c);
+        printf("Digite um unsigned long: ");
+        scanf("%lu", &ul);
+        getchar();
+        printf("Digite um unsigned char: ");
+        scanf("%hhc", &uc);
+
+
+
+        pi = &i;
+        pl = &l;
+        pu = &u;
+        pf = &f;
+        pd = &d;
+        pc = &c;
+        pul = &ul;
+        puc = &uc;
+
+        printf("        10        20        30        40        50        60\n");
+        printf("123456789012345678901234567890123456789012345678901234567890\n");
+        printf("    %-20d", *pi);
+        printf("%-20ld", *pl);
+        printf("%-15u\n", *pu);
+        printf("              %-20f", *pf);
+        printf("%-20f", *pd);
+        printf("%c\n", *pc);
+        printf("         %-20lu", *pul);
+        printf("%hhc\n", *puc);
         if(endProgram()){
             printf("\nPrograma finalizado. Obrigado.");
             break;
@@ -166,7 +165,6 @@ main(){
 
 main(){
     while(1){
-
         char array[14] = "bdfhjlmoqsuwy";
         int equal = 0;
         char letter;
@@ -404,7 +402,7 @@ main(){
                         diffInDays += 30 * (pDates[0].month - pDates[1].month);
                     }
                     else{
-                        if(pDates[0].day < pDates[1].day){ // Ex 14: 10/4/2018 - 20/3/2018 = 20
+                        if(pDates[0].day < pDates[1].day){ // Ex 1=4: 10/4/2018 - 20/3/2018 = 20
                             diffInDays += (pDates[0].day + 30) - pDates[1].day;
                             diffInDays += 30 * (pDates[0].month - pDates[1].month - 1);
                         }

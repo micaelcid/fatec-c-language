@@ -29,7 +29,7 @@ main(){
         printf("Digite um float: ");
         scanf("%f", &var.f);
         printf("Digite um double: ");
-        scanf("%f", &var.d);
+        scanf("%lf", &var.d);
         printf("Digite um unsigned char: ");
         scanf("%u", &var.uc);
         printf("Digite um unsigned int: ");
@@ -42,12 +42,13 @@ main(){
         printf("%5c", var.c);
         printf("         %-10d", var.i);
         printf("%-20ld", var.l);
-        printf("%-20f", var.f);
-        printf("%-5f\n", var.d);
+        printf("%-20.2f", var.f);
+        printf("%-5.2lf\n", var.d);
 
         printf("          %-20u", var.uc);
         printf("%-20u", var.ui);
         printf("%-19u", var.ul);
+
 
         printf("\n");
 
