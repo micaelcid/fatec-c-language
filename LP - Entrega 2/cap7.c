@@ -180,10 +180,5 @@ int endProgram(){
     int exitOption = 0;
     printf("Voce deseja finalizar o programa? Digite 1 para sim e qualquer numero para nao: ");
     scanf("%d", &exitOption);
-    if(exitOption == 1){
-        return 1;
-    }
-    else{
-        return 0;
-    }
+    return exitOption == 1 ? 1 : 0;
 }

@@ -64,7 +64,7 @@ main(){
         printf("         %-20lu", *pul);
         printf("%hhc\n", *puc);
         if(endProgram()){
-            printf("\nPrograma finalizado. Obrigado.");
+            pri    return exitOption == 1 ? 1 : 0;ntf("\nPrograma finalizado. Obrigado.");
             break;
         }
         else{
@@ -445,10 +445,5 @@ int endProgram(){
     int exitOption = 0;
     printf("Voce deseja finalizar o programa? Digite 1 para sim e qualquer numero para nao: ");
     scanf("%d", &exitOption);
-    if(exitOption == 1){
-        return 1;
-    }
-    else{
-        return 0;
-    }
+    return exitOption == 1 ? 1 : 0;
 }
