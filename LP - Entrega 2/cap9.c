@@ -333,10 +333,28 @@ main(){
                 }
                 break;
             case 3:
+                if(usersInserted == 0){
+                    printf("Voce ainda nao inseriu nenhum usuario\n");
+                }
+                else{
+                    findUser(&users);
+                }
                 break;
             case 4:
+                if(usersInserted == 0){
+                    printf("Voce ainda nao inseriu nenhum usuario\n");
+                }
+                else{
+                    updateUser(&users);
+                }
                 break;
             case 5:
+                if(usersInserted == 0){
+                    printf("Voce ainda nao inseriu nenhum usuario\n");
+                }
+                else{
+                    deleteUser(&users);
+                }
                 break;
             case 9:
                 break;
@@ -362,16 +380,106 @@ void insertUsers(struct User *users){
         gets(users[usersCount].state);
         printf("Digite o CEP do usuario: ");
         gets(users[usersCount].zipCode);
-        printf("Usuario %d/4 inserido: \n", usersCount + 1);
+        printf("Usuario inserido: \n");
         printf("%s, %s, %s, %s, %s \n", users[usersCount].name, users[usersCount].address, users[usersCount].city, users[usersCount].state, users[usersCount].zipCode);
     }
 }
+
 void getUsers(struct User *users){
     for(int i = 0; i < 4; i++){
-        printf("Usuario %d/4: %s, %s, %s, %s, %s \n", i+1, users[i].name, users[i].address, users[i].city, users[i].state, users[i].zipCode);
+        if(users[i].name[0] != '\0'){
+            printf("Usuario: %s, %s, %s, %s, %s \n", users[i].name, users[i].address, users[i].city, users[i].state, users[i].zipCode);
+        }
+    }
+}
+void findUser(struct User *users){
+    char name[64];
+    int result;
+    printf("Digite o nome do usuario: ");
+    scanf("%s", &name);
+    for(int i = 0; i < 4; i++){
+        result = areEqual(&name, &users[i].name);
+        if(result == 1){
+            printf("Usuario: %s, %s, %s, %s, %s \n", users[i].name, users[i].address, users[i].city, users[i].state, users[i].zipCode);
+            break;
+        }
+    }
+    if(result != 1){
+        printf("Usuario nao encontrado\n");
+    }
+}
+void updateUser(struct User *users){
+    char name[64];
+    int result;
+    printf("Digite o nome do usuario: ");
+    scanf("%s", &name);
+    for(int i = 0; i < 4; i++){
+        result = areEqual(&name, &users[i].name);
+        if(result == 1){
+            getchar();
+            printf("Digite as novas informacoes do usuario. \n");
+            printf("Digite o nome do usuario: ");
+            gets(users[i].name);
+            printf("Digite o endereco do usuario: ");
+            gets(users[i].address);
+            printf("Digite a cidade do usuario: ");
+            gets(users[i].city);
+            printf("Digite o estado do usuario: ");
+            gets(users[i].state);
+            printf("Digite o CEP do usuario: ");
+            gets(users[i].zipCode);
+            printf("Usuario atualizado: \n");
+            printf("%s, %s, %s, %s, %s \n", users[i].name, users[i].address, users[i].city, users[i].state, users[i].zipCode);
+            break;
+        }
+    }
+    if(result != 1){
+        printf("Usuario nao encontrado\n");
     }
 }
 
+void deleteUser(struct User *users){
+    char name[64];
+    int result;
+    printf("Digite o nome do usuario: ");
+    scanf("%s", &name);
+    for(int i = 0; i < 4; i++){
+        result = areEqual(&name, &users[i].name);
+        if(result == 1){
+            users[i].name[0] = '\0';
+            printf("Usuario deletado\n");
+            break;
+        }
+    }
+    if(result != 1){
+        printf("Usuario nao encontrado\n");
+    }
+}
+
+
+int areEqual(char *firstString, char *secondString){
+    int result = 0;
+    int i = 0;
+    for(i; firstString[i] != '\0' ||secondString[i] != '\0'; i++){
+        if(firstString[i] != secondString[i]){
+            result = 4;
+            if(firstString[i] == '\0' && secondString[i] != '\0'){
+                result = 3;
+                break;
+            }
+            else{
+                if(firstString[i] != '\0' && secondString[i] == '\0'){
+                    result = 2;
+                    break;
+                }
+            }
+        }
+        else{
+            result = 1;
+        }
+    }
+    return result;
+}
 #endif // ex6
 
 int endProgram(){
