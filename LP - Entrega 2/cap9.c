@@ -115,7 +115,7 @@ main(){
         int sum = 0;
 
         while(1){
-            if(receiveValues(&value, &operation)){gets
+            if(receiveValues(&value, &operation)){
                 calculateValues(&value, &operation, &sum);
             }
             else{

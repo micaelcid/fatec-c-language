@@ -1,4 +1,4 @@
-#define ex1
+#define ex6
 #include "stdio.h"
 #include "stdlib.h"
 /******************************************************************************
@@ -486,36 +486,36 @@ OBS.: Todos os programa devem ser finalizados pelo usuario.
 
 1 - Faça um programa para:
     1 - criar/abrir um arquivo texto de nome ”arq.txt”,
-    2 - receba via teclado diversos caracteres (um por vezes)e armazene nesse 
-        arquivo. O caracter '0' finaliza a entrada de dados. 
+    2 - receba via teclado diversos caracteres (um por vezes)e armazene nesse
+        arquivo. O caracter '0' finaliza a entrada de dados.
     3 - reabra o arquivo fazendo o ponteiro apontar para seu início
     4 - leia e imprima na tela todos os caracteres armazenados.
 
-2 - Faça um programa para gerenciar uma agenda de contatos. Para cada contato 
-    armazene o nome, o telefone e o aniversário (dia e mês). O programa deve ter 
+2 - Faça um programa para gerenciar uma agenda de contatos. Para cada contato
+    armazene o nome, o telefone e o aniversário (dia e mês). O programa deve ter
     as opções:
     1 - inserir contato,
-    2 - remover contato, 
-    3 - pesquisar um contato pelo nome, 
-    4 - listar todos os contatos, 
-    5 - listar os contatos cujo nome inicia com uma dada letra, 
-    6 - imprimir os aniversariantes do mês. 
-    Sempre que o programa for encerrado, os contatos devem ser armazenados. Quando 
-    o programa iniciar, os contatos devem ser inicializados com os dados contidos 
+    2 - remover contato,
+    3 - pesquisar um contato pelo nome,
+    4 - listar todos os contatos,
+    5 - listar os contatos cujo nome inicia com uma dada letra,
+    6 - imprimir os aniversariantes do mês.
+    Sempre que o programa for encerrado, os contatos devem ser armazenados. Quando
+    o programa iniciar, os contatos devem ser inicializados com os dados contidos
     no arquivo.
 
 3 - Implemente um controle simples de mercadorias em uma despensa doméstica.
-    Sobre cada produto será armazenado um código numérico, descrição e 
+    Sobre cada produto será armazenado um código numérico, descrição e
     quantidade atual.
     O programa deve ter as opções:
     1 - entrada de produtos
     2 - retirada de produtos
     3 - pesquisar uma mercadoria pela descrição
-    4 - listar todos os produtos 
+    4 - listar todos os produtos
     5 - listar os produtos não disponíveis.
     Escreva os itens das mercadorias direto no arquivo. (utilize a funcao fseek).
 
-4 - A partir do exercico 7 do capitulo de funcoes, retire o vetor de estrutura e 
+4 - A partir do exercico 7 do capitulo de funcoes, retire o vetor de estrutura e
     passe a escrever e ler os registros direto no arquivo. (utilize a funcao fseek).
 */
 
