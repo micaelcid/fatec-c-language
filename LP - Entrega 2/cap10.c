@@ -84,7 +84,7 @@ main(){
     }
 }
 void insertContact(struct Contact *contact){
-    if((p = fopen("contacts", "a")) == NULL){
+    if((p = fopen("contacts.txt", "a")) == NULL){
         printf("erro na abertura do arquivo \n");
         exit(0);
     }
@@ -97,60 +97,89 @@ void insertContact(struct Contact *contact){
     scanf("%d", &contact->birthMonth);
     printf("Digite o dia do nascimento do usuario: ");
     scanf("%d", &contact->birthDay);
-    fwrite(contact, sizeof(contact), 1, p);
-    printf("Usuario inserido: \n");
-    printf("%s, %s, %d/%d \n", contact->name, contact->phone, contact->birthDay, contact->birthMonth);
+    fwrite(contact, sizeof(struct Contact), 1, p);
     fclose(p);
 }
 
 void deleteContact(struct Contact *contact){
-    // char name[64];
-    // int result;
-    // printf("Digite o nome do usuario: ");
-    // scanf("%s", &name);
-    // for(int i = 0; i < 4; i++){
-    //     result = areEqual(&name, &users[i].name);
-    //     if(result == 1){
-    //         users[i].name[0] = '\0';
-    //         printf("Usuario deletado\n");
-    //         break;
-    //     }
-    // }
-    // if(result != 1){
-    //     printf("Usuario nao encontrado\n");
-    // }
+    if((p = fopen("contacts.txt", "r+")) == NULL){
+        printf("erro na abertura do arquivo \n");
+        exit(0);
+    }
+    char name[64];
+    int result;
+    int i = 0;
+    printf("Digite o nome do contato: ");
+    scanf("%s", &name);
+    while(fread(contact, sizeof(struct Contact), 1, p)){
+        result = areEqual(&name, contact->name);
+        if(result == 1){
+            *contact->name = '\0';
+            fseek(p, sizeof(struct Contact) * i, 0);
+            fwrite(contact, sizeof(struct Contact), 1, p);
+            break;
+        }
+        i++;
+    }
+    if(result != 1){
+        printf("Usuario nao encontrado\n");
+    }
+    fclose(p);
 }
 
 void getContactByName(struct Contact *contact){
-    // char name[64];
-    // int result;
-    // printf("Digite o nome do usuario: ");
-    // scanf("%s", &name);
-    // for(int i = 0; i < 4; i++){
-    //     result = areEqual(&name, &users[i].name);
-    //     if(result == 1){
-    //         printf("Usuario: %s, %s, %s, %s, %s \n", users[i].name, users[i].address, users[i].city, users[i].state, users[i].zipCode);
-    //         break;
-    //     }
-    // }
-    // if(result != 1){
-    //     printf("Usuario nao encontrado\n");
-    // }
+    if((p = fopen("contacts.txt", "r+")) == NULL){
+        printf("erro na abertura do arquivo \n");
+        exit(0);
+    }
+    char name[64];
+    int result;
+    printf("Digite o nome do contato: ");
+    scanf("%s", &name);
+    while(fread(contact, sizeof(struct Contact), 1, p)){
+        result = areEqual(&name, contact->name);
+        if(result == 1){
+            printf("%s, %s, %d/%d \n", contact->name, contact->phone, contact->birthDay, contact->birthMonth);
+            break;
+        }
+    }
+    if(result != 1){
+        printf("Usuario nao encontrado\n");
+    }
+    fclose(p);
 }
 void getContacts(struct Contact *contact){
-    // for(int i = 0; i < 4; i++){
-    //     if(users[i].name[0] != '\0'){
-    //         printf("Usuario: %s, %s, %s, %s, %s \n", users[i].name, users[i].address, users[i].city, users[i].state, users[i].zipCode);
-    //     }
-    // }
+    if((p = fopen("contacts.txt", "r")) == NULL){
+        printf("erro na abertura do arquivo \n");
+        exit(0);
+    }
+    while(fread(contact, sizeof(struct Contact), 1, p)){
+        if(*contact->name != '\0'){
+            printf("%s, %s, %d/%d \n", contact->name, contact->phone, contact->birthDay, contact->birthMonth);
+        }
+    }
+    fclose(p);
 }
 
 void getContactsByInitial(struct Contact *contact){
-    // for(int i = 0; i < 4; i++){
-    //     if(users[i].name[0] != '\0'){
-    //         printf("Usuario: %s, %s, %s, %s, %s \n", users[i].name, users[i].address, users[i].city, users[i].state, users[i].zipCode);
-    //     }
-    // }
+if((p = fopen("contacts.txt", "r+")) == NULL){
+        printf("erro na abertura do arquivo \n");
+        exit(0);
+    }
+    char initial;
+    int result;
+    printf("Digite uma letra: ");
+    scanf("%s", &initial);
+    while(fread(contact, sizeof(struct Contact), 1, p)){
+        result = contact->name[0] == initial ? 1 : 0;
+        if(result == 1){
+            printf("%s, %s, %d/%d \n", contact->name, contact->phone, contact->birthDay, contact->birthMonth);
+        }
+    }
+    if(result != 1){
+        printf("Usuario nao encontrado\n");
+    }
+    fclose(p);
 }
 void getBirthdayPeopleOfTheMonth(struct Contact *contact){
 
