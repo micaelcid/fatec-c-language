@@ -4,6 +4,9 @@
 struct User{
     char name[64];
     char address[255];
+    int birthYear;
+    int birthMonth;
+    int birthDay;
     char city[64];
     char state[64];
     char zipCode[64];

@@ -1,0 +1,30 @@
+PROGRAMAS DESAFIOS
+
+1 - Escreva um programa que tem a estrutura de dados abaixo. O programa tem as seguintes opções de menu:
+
+   1 – entra dados.
+   2 – lista dados na tela.
+   3 – pesquisar um registro por nome.
+   4 – pesquisar pela 1. letra do nome.
+   5 – pesquisar os aniversariantes de um determinado mês.
+   6 – pesquisa por cep.
+   7 – altera dados.
+   8 – exclui dados.
+   9 - saída
+
+Todas as operações devem ser feitas direto no arquivo. (utilize a funcao fseek).
+ 
+Estrutura: nome, endereço, data de nascimento, cidade, estado e cep. 
+
+Obs.: a estrutura de dados deve ser variável local na função main().
+
+Obs.: o programa deve ser finalizado pelo usuário. 
+
+O programa devem ser entregue num único email.
+
+Entrega dia 04/06/2019
+Assunto: PRDF
+email: lingprog3f@gmail.com
+
+
+

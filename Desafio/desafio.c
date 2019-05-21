@@ -5,13 +5,15 @@
 #include "controller/user.h"
 #include "helpers/compareStrings.h"
 #include "helpers/endProgram.h"
-FILE *p;
 
 main(){
     struct User user;
     int menuOption = 0;
     while(1){
-        printf("1 - Inserir usuario | 2 - Listar usuarios | 3 - Procurar usuario | 4 - Alterar usuario | 5 - Deletar usuario | 9 - Sair\n");        printf("Escolha uma opcao: ");
+        printf("1 - Inserir usuario | 2 - Listar usuarios | 3 - Pesquisar usuario por nome \n");
+        printf("4 - Pesquisar usuario por inicial | 5 - Pesquisar usuarios aniversariantes do mes | 6 - Pesquisar usuario por CEP \n");
+        printf("7 - Alterar usuario | 8 - Deletar usuario | 9 - Sair\n");
+        printf("Escolha uma opcao: ");
         scanf("%d", &menuOption);
         switch(menuOption){
             case 1:
@@ -24,9 +26,18 @@ main(){
                 getUserByName(&user);
                 break;
             case 4:
-                updateUser(&user);
+                getUserByInitial(&user);
                 break;
             case 5:
+                getUserByBirthMonth(&user);
+                break;
+            case 6:
+                getUserByZipCode(&user);
+                break;
+            case 7:
+                updateUser(&user);
+                break;
+            case 8:
                 removeUser(&user);
                 break;
             case 9:

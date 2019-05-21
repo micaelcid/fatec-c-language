@@ -13,6 +13,13 @@ void insertUser(struct User *user){
     gets(user->name);
     printf("Digite o endereco do usuario: ");
     gets(user->address);
+    printf("Digite o ano de nascimento do usuario: ");
+    scanf("%d", &user->birthYear);
+    printf("Digite o mes de nascimento do usuario: ");
+    scanf("%d", &user->birthMonth);
+    printf("Digite o dia de nascimento do usuario: ");
+    scanf("%d", &user->birthDay);
+    getchar();
     printf("Digite a cidade do usuario: ");
     gets(user->city);
     printf("Digite o estado do usuario: ");
@@ -71,6 +78,13 @@ void updateUser(struct User *user){
             gets(user->name);
             printf("Digite o endereco do usuario: ");
             gets(user->address);
+            printf("Digite o ano de nascimento do usuario: ");
+            scanf("%d", &user->birthYear);
+            printf("Digite o mes de nascimento do usuario: ");
+            scanf("%d", &user->birthMonth);
+            printf("Digite o dia de nascimento do usuario: ");
+            scanf("%d", &user->birthDay);
+            getchar();
             printf("Digite a cidade do usuario: ");
             gets(user->city);
             printf("Digite o estado do usuario: ");
@@ -90,26 +104,97 @@ void updateUser(struct User *user){
 }
 
 void getUserByName(struct User *user){
-    if((p = fopen("users.txt", "r+")) == NULL){
+    if((p = fopen("users.txt", "r")) == NULL){
         printf("erro na abertura do arquivo \n");
         exit(0);
     }
     char name[64];
     int result;
-    printf("Digite a descrição do produto: ");
+    int found = 0;
+    printf("Digite o nome do usuario: ");
     scanf("%s", &name);
     while(fread(user, sizeof(struct User), 1, p)){
         result = areEqual(&name, user->name);
         if(result == 1){
-            printf("%s, %s, %s, %s, %s \n", user->name, user->address, user->city, user->state, user->zipCode);
-            break;
+            printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
+            found = 1;
         }
     }
-    if(result != 1){
-        printf("Produto nao encontrado\n");
+    if(found == 0){
+        printf("Usuario nao encontrado\n");
     }
     fclose(p);
 }
+
+void getUserByInitial(struct User *user){
+    if((p = fopen("users.txt", "r")) == NULL){
+        printf("erro na abertura do arquivo \n");
+        exit(0);
+    }
+    char name[64];
+    int result;
+    int found = 0;
+    printf("Digite a inicial do nome do usuario: ");
+    scanf("%s", &name);
+    while(fread(user, sizeof(struct User), 1, p)){
+        result = name[0] == user->name[0] ? 1 : 0;
+        if(result == 1){
+            printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
+            found = 1;
+        }
+    }
+    if(found == 0){
+        printf("Usuarios nao encontrados\n");
+    }
+    fclose(p);
+}
+
+void getUserByBirthMonth(struct User *user){
+    if((p = fopen("users.txt", "r+")) == NULL){
+        printf("erro na abertura do arquivo \n");
+        exit(0);
+    }
+    int month;
+    int result;
+    int found = 0;
+    printf("Digite o numero de um mes de 1 a 12: ");
+    scanf("%d", &month);
+    while(fread(user, sizeof(struct User), 1, p)){
+        result = month == user->birthMonth ? 1 : 0;
+        if(result == 1){
+            printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
+            found = 1;
+        }
+    }
+    if(found == 0){
+        printf("Usuarios nao encontrados\n");
+    }
+    fclose(p);
+}
+
+void getUserByZipCode(struct User *user){
+    if((p = fopen("users.txt", "r")) == NULL){
+        printf("erro na abertura do arquivo \n");
+        exit(0);
+    }
+    char zipCode[64];
+    int result;
+    int found = 0;
+    printf("Digite o CEP: ");
+    scanf("%s", &zipCode);
+    while(fread(user, sizeof(struct User), 1, p)){
+        result = areEqual(&zipCode, user->zipCode);
+        if(result == 1){
+            printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
+            found = 1;
+        }
+    }
+    if(found == 0){
+        printf("Usuarios nao encontrados\n");
+    }
+    fclose(p);
+}
+
 void getUsers(struct User *user){
     if((p = fopen("users.txt", "r")) == NULL){
         printf("erro na abertura do arquivo \n");
@@ -117,7 +202,7 @@ void getUsers(struct User *user){
     }
     while(fread(user, sizeof(struct User), 1, p)){
         if(user->name[0] != '\0'){
-            printf("%s, %s, %s, %s, %s \n", user->name, user->address, user->city, user->state, user->zipCode);
+            printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
         }
     }
     fclose(p);
