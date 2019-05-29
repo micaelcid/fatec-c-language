@@ -10,9 +10,9 @@ main(){
     struct User user;
     int menuOption = 0;
     while(1){
-        printf("1 - Inserir usuario | 2 - Listar usuarios | 3 - Pesquisar usuario por nome \n");
-        printf("4 - Pesquisar usuario por inicial | 5 - Pesquisar usuarios aniversariantes do mes | 6 - Pesquisar usuario por CEP \n");
-        printf("7 - Alterar usuario | 8 - Deletar usuario | 9 - Sair\n");
+        printf("1 - Inserir usuario \n2 - Listar usuarios \n3 - Pesquisar usuario por nome\n");
+        printf("4 - Pesquisar usuario por inicial \n5 - Pesquisar usuarios aniversariantes do mes \n6 - Pesquisar usuario por CEP\n");
+        printf("7 - Alterar usuario \n8 - Deletar usuario \n9 - Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &menuOption);
         switch(menuOption){
