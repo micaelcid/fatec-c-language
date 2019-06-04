@@ -40,6 +40,8 @@ void removeUser(struct User *user){
         exit(0);
     }
     getchar();
+    printf("Alterando usuario... Aperte ENTER para continuar\n");
+    getchar();
     char name[64];
     int result;
     int i = 0;
@@ -178,10 +180,12 @@ void getUserByBirthMonth(struct User *user){
     printf("Digite o numero de um mes de 1 a 12: ");
     scanf("%d", &month);
     while(fread(user, sizeof(struct User), 1, p)){
-        result = month == user->birthMonth ? 1 : 0;
-        if(result == 1){
-            printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
-            found = 1;
+        if(user->name[0] != '\0'){
+            result = month == user->birthMonth ? 1 : 0;
+            if(result == 1){
+                printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
+                found = 1;
+            }
         }
     }
     if(found == 0){
@@ -204,10 +208,12 @@ void getUserByZipCode(struct User *user){
     printf("Digite o CEP: ");
     gets(zipCode);
     while(fread(user, sizeof(struct User), 1, p)){
-        result = areEqual(&zipCode, user->zipCode);
-        if(result == 1){
-            printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
-            found = 1;
+        if(user->name[0] != '\0'){
+            result = areEqual(&zipCode, user->zipCode);
+            if(result == 1){
+                printf("%s, %s, %d/%d/%d, %s, %s, %s \n", user->name, user->address, user->birthDay, user->birthMonth, user->birthYear, user->city, user->state, user->zipCode);
+                found = 1;
+            }
         }
     }
     if(found == 0){
